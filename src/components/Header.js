@@ -1,13 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import { Link, withRouter } from 'react-router-dom';
+//import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AUTH_TOKEN } from '../constants';
 
 const Header = () => {
   const history = useHistory();
   const authToken = localStorage.getItem(AUTH_TOKEN);
-
-
   return (
     <div className="flex pa1 justify-between nowrap orange">
       <div className="flex flex-fixed black">
@@ -15,12 +14,14 @@ const Header = () => {
         <Link to="/" className="ml1 no-underline black">
           new
         </Link>
-        <div className="ml1">|</div>
+	
+	<div className="ml1">|</div>
         <Link to="/top" className="ml1 no-underline black">
           top
         </Link>
-        <div className="ml1">|</div>
-        <Link
+         <div className="ml1">|</div>
+        
+	<Link
           to="/search"
           className="ml1 no-underline black"
         >
@@ -29,11 +30,11 @@ const Header = () => {
         {authToken && (
           <div className="flex">
             <div className="ml1">|</div>
-            <Link
-              to="/create"
-              className="ml1 no-underline black"
-            >
-              submit
+	<Link
+          to="/create"
+          className="ml1 no-underline black"
+        >
+         submit
             </Link>
           </div>
         )}
@@ -60,8 +61,6 @@ const Header = () => {
       </div>
     </div>
   );
-
-
 };
 
 export default Header;
