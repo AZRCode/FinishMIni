@@ -1,30 +1,24 @@
-import React  from 'react';
+import React from 'react';
 import { gql, useMutation } from '@apollo/client';
-import { AUTH_TOKEN, LINKS_PER_PAGE} from '../constants';
+
+import { AUTH_TOKEN, LINKS_PER_PAGE } from '../constants';
 import { timeDifferenceForDate } from '../utils';
 import { FEED_QUERY } from './LinkList';
 
-
 const VOTE_MUTATION = gql`
-  mutation VoteMutation($linkId: ID!) {
-    vote(linkId: $linkId) {
-      id
-      link {
-        votes {
-          id
-          user {
-            id
-          }
-        }
-      }
+  mutation createVote($linkId: Int!) {
+    createVote(linkId: $linkId) {
       user {
-        id
+        username
+        email
+      }
+      link {
+        url
+        description
       }
     }
   }
 `;
-
-
 
 const Link = (props) => {
   const { link } = props;
@@ -38,50 +32,50 @@ const Link = (props) => {
     variables: {
       linkId: link.id
     },
-    update(cache, { data: { vote } }) {
-      const { feed } = cache.readQuery({
-        query: FEED_QUERY,
-        variables: {
-          take,
-          skip,
-          orderBy
-        }
+    onCompleted: ({ createVote }) => {
+      console.log(createVote);
+    },
+   update(cache, { data: { vote } }) {
+      const { links } = cache.readQuery({
+        query: FEED_QUERY
       });
 
-      const updatedLinks = feed.links.map((feedLink) => {
+    const updatedLinks = links.map((feedLink) => {
         if (feedLink.id === link.id) {
           return {
             ...feedLink,
-            votes: [...feedLink.votes, vote]
+            votes: [...feedLink.votes.edges, vote]
           };
         }
         return feedLink;
-      });
+      } );
 
-      cache.writeQuery({
+
+    cache.writeQuery({
         query: FEED_QUERY,
         data: {
           feed: {
             links: updatedLinks
           }
-        },
-        variables: {
-          take,
-          skip,
-          orderBy
         }
-      });
-    }
-  });
+    });
+  }
+})
+
   return (
     <div className="flex mt2 items-start">
       <div className="flex items-center">
+
         <span className="gray">{props.index + 1}.</span>
+
         {authToken && (
           <div
             className="ml1 gray f11"
             style={{ cursor: 'pointer' }}
-            onClick={vote}
+            onClick={() => {
+              vote()
+              window.location.reload()
+            }}
           >
             ▲
           </div>
@@ -89,13 +83,13 @@ const Link = (props) => {
       </div>
       <div className="ml1">
         <div>
-          {link.description} ({link.url})
+        {link.id} - {link.description} ({link.url})
         </div>
         {authToken && (
           <div className="f6 lh-copy gray">
-            {link.votes.length} votes | by{' '}
-            {link.postedBy ? link.postedBy.name : 'Unknown'}{' '}
-            {timeDifferenceForDate(link.createdAt)}
+            {link.votes.edges.length} votes | by{' '}
+            {link.postedBy ? link.postedBy.username : 'Unknown'}{' '}
+            {timeDifferenceForDate(Date().toLocaleString())}
           </div>
         )}
       </div>

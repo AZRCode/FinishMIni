@@ -13,7 +13,7 @@ input {
 }
 
 .orange {
-  background-color: #ff6600;
+  background-color: #3b83bd;
 }
 
 .background-gray {
@@ -32,12 +32,28 @@ input {
   font-family: monospace;
   font-size: 10pt;
   color: black;
-  background-color: buttonface;
+  background-color: skyblue;
+  border-radius: 60px;
   text-align: center;
   padding: 2px 6px 3px;
   border-width: 2px;
   border-style: outset;
-  border-color: buttonface;
+  border-color: blue;
   cursor: pointer;
   max-width: 250px;
+}
+
+.button:hover {
+  color: blue;
+  font-size: 11pt;
+}
+
+.i-Home{
+  font-size: 2rem;
+  color: darkorange;
+}
+
+.Center{
+  text-align: center;
+  font-size: 1rem;
 }

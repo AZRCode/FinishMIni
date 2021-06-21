@@ -62,15 +62,14 @@ const CreateLink = () => {
     onCompleted: () => history.push('/new/1')
   });
 
-
-
-
-
-
-
-
-
-
+  
+ 
+//Crea funcion para lmandar a otro componente
+  function clickHistory(){
+    history.push("/");
+    window.location.reload()
+  }
+  
   return (
     <div>
       <form
@@ -105,7 +104,11 @@ const CreateLink = () => {
             placeholder="The URL for the link"
           />
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit"  onClick={ () => {
+          createLink();
+          clickHistory(); //Se llama a la funcion
+          
+        } }>Submit</button>
       </form>
     </div>
   );
