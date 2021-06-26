@@ -85,7 +85,7 @@ const [signup] = useMutation(SIGNUP_MUTATION, {
 
 
   return (
-    <div>
+    <div className="flex pa1 justify-between nowrap orange centerVertical">
       <h4 className="mv3">
         {formState.login ? 'Login' : 'Sign Up'}
       </h4>

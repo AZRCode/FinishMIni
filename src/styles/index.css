@@ -3,7 +3,12 @@ body {
   padding: 0;
   font-family: Verdana, Geneva, sans-serif;
 }
-
+.row{
+  text-align: center;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 5rem;
+}
 input {
   max-width: 500px;
 }
@@ -13,7 +18,7 @@ input {
 }
 
 .orange {
-  background-color: #3b83bd;
+  background-color: pink;
 }
 
 .background-gray {
@@ -31,9 +36,9 @@ input {
 .button {
   font-family: monospace;
   font-size: 10pt;
-  color: black;
-  background-color: skyblue;
-  border-radius: 60px;
+  color: darkorchid;
+  background-color: palevioletred;
+ 
   text-align: center;
   padding: 2px 6px 3px;
   border-width: 2px;
@@ -43,17 +48,25 @@ input {
   max-width: 250px;
 }
 
-.button:hover {
-  color: blue;
-  font-size: 11pt;
-}
+
 
 .i-Home{
   font-size: 2rem;
-  color: darkorange;
+  color: darkred;
 }
 
 .Center{
   text-align: center;
   font-size: 1rem;
+}
+
+button{
+  color: aqua;
+  background-color: palevioletred;
+}
+
+input{
+  background-color: blueviolet;
+  color: aliceblue;
+  border-radius: 100px;
 }

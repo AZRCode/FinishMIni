@@ -16,21 +16,21 @@ const Header = () => {
   }
   return (
     
-    <div className="flex pa1 justify-between nowrap orange centerVertical">
+    <div className=" justify-center row nowrap orange centerVertical">
       <div className="flex flex-fixed black">
-        <div className="fw7 mr1">Hacker News <br></br>by AZRCode</div>
-        <Link to="/" className="ml1 no-underline black">
-        <FontAwesomeIcon className="i-Home" icon={faNewspaper}/>
+        <div className="fw7 mr1">Proyecto del pa macizo Irving Saul</div>
+        <Link to="/" className="ml1 hoverB:hover no-underline black">
+        new
         </Link>
 
 	<div className="ml1"> </div>
         <Link to="/top" className="ml1 no-underline black">
-        <FontAwesomeIcon className="i-Home" icon={faChevronCircleUp}/>
+        top
         </Link>
 
         <div className="ml1"></div>
         <Link to="/search" className="ml1 no-underline black">
-        <FontAwesomeIcon className="i-Home" icon={faSearch}/>
+        search
         </Link>
 
         {authToken && (
@@ -39,14 +39,12 @@ const Header = () => {
 	<Link to="/create"
           className="ml1 no-underline black"
         >
-         <FontAwesomeIcon className="i-Home" icon={faUpload}/>
+         new Link
             </Link>
           </div>
         )}
       </div>
-      <div className="Center">
-        <p>"El primer paso es establecer que algo es posible, entonces es probable que ocurra"</p>
-      </div>
+      
       <div className="flex flex-fixed">
         {authToken ? (
           <div
@@ -58,14 +56,14 @@ const Header = () => {
               
             }}
           >
-            <FontAwesomeIcon className="i-Home" icon={faSignOutAlt}/>
+            logout
           </div>
         ) : (
           <Link
             to="/login"
             className="ml1 no-underline black"
           >
-            <FontAwesomeIcon className="i-Home" icon={faUser}/>
+            logout
           </Link>
         )}
       </div>

@@ -29,6 +29,11 @@ const App = () => (
         <Route exact path="/search" component={Search} />
       </Switch>
     </div>
+
+    <div className="Center">
+      <h1>Elon Musk</h1>
+      <p>"Un consejo: es importante ver el conocimiento como una especie de árbol semántico; asegúrate de entender bien los principios fundamentales, es decir, el tronco y las ramas, antes de entrar en las hojas o los detalles, o no habrá nada donde puedan agarrarse"</p>
+      </div>
   </div>
 );
 
